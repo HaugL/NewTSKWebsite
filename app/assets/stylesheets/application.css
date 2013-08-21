@@ -11,3 +11,57 @@
  *= require_self
  *= require_tree .
  */
+
+body{
+	font-family: "MuseoSans300",sans-serif;
+}
+
+a{
+	text-decoration: none;
+}
+
+.header-container{
+    margin:50px 100px 0px 100px;
+	background-color:#000000;
+	border-radius:25px;
+	padding:23px;
+}
+
+
+.header-links {
+	font-size: x-large;
+	color: white;
+	vertical-align: center;
+	/*margin-right: 30px;*/
+}
+
+.header-login{
+	color:white;
+	text-align: right;
+    font-size: medium;
+    position: relative;
+    bottom: 40px;
+}
+
+.header-container a{
+	color:white;
+}
+
+.logo{
+
+}
+
+.container{
+    margin:20px 120px 25px 120px;
+
+}
+
+.title{
+		font: bold 30px Arial,Helvetica,Sans-serif;
+		margin-bottom: 20px;
+}
+
+.center{
+	margin-left: auto;
+	margin-right: auto;
+}

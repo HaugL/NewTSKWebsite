@@ -3,12 +3,32 @@
 <head>
   <title>Tsk</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag 'formtastic', 'my_formtastic_changes' %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+		<div class = 'header-container'>
+			<div class = 'header-links'>
+				<%= link_to 'Products', root_path %>
+				<%= link_to 'Orders', orders_path %>
+				<% if session[:admin] %>
+					<%= link_to 'Admin Dashboard', admin_dashboard_path %>
+				<% end %>
+			</div>
+			<div class = 'header-login'>
+				<% if session[:member_id].nil? %>
+					<%= link_to 'Log-In', login_path %>
+				<% else %>
+					<%= link_to 'Log-Out', logout_path, :method => :delete %>
+				<% end %>
+			</div>
+		</div>
+		<div class = 'container'>
+		<%= yield %>
+		</div>
 
-<%= yield %>
+
 
 </body>
 </html>

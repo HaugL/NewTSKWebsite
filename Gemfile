@@ -7,6 +7,11 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 
+  gem 'formtastic'
+  gem "carrierwave"
+  gem "rmagick"
+  gem 'bcrypt-ruby'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,6 +26,12 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+gem "bcrypt-ruby", :require => "bcrypt"
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem "hash_to_hidden_fields"
+
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

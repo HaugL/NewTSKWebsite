@@ -1,0 +1,19 @@
+<div class = 'form-container'>
+	<div class = 'title'>Create a Product</div>
+	 <%= semantic_form_for @product, :html => {:multipart => true} do |f| %>
+	    <%= f.inputs do %>
+	      <%= f.input :name, :required => true%>
+	      <%= f.input :source_id, :as => :select, :collection => Source.all, :required => true %>
+	      <%= f.input :source_notes, :hint => "Enter extra notes about the source that are special for this product" %>
+		  <%= f.input :unit, :hint => "25 lbs Bag" %>
+		  <%= f.input :price, :as => :string, :hint => "The price per unit ( ex. 4.25 )" %>
+		  <%= f.input :pick_up_day, :as => :select, :collection => @days, :hint => "Day this item will be ready for pick-up" %>
+		  <%= f.input :order_by_day, :as => :select, :collection => @days, :hint => "Day the member must order by to get it ordered for the pick-up day" %>
+	      <%= f.file_field :image, :label => "Picture" %>
+	      <br><br><br>
+	    <% end %>
+	    <%= f.actions do %>
+	      <%= f.action :submit, :as => :button %>
+	    <% end %>
+	  <% end %>
+</div>

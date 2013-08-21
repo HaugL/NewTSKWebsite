@@ -1,4 +1,30 @@
 Tsk::Application.routes.draw do
+
+ root :to => 'products#index'
+
+ resources :cart, :only => [:index]
+ resources :orders
+
+ resources :products
+ resources :units , :except => [:show, :new]
+ resources :sources
+ resources :charges
+ resources :admin_orders
+ resources :members
+ 
+ #Cart routes
+ post 'add_to_cart' => 'cart#add_to_cart'
+ delete 'remove_from_cart' => 'cart#remove_from_cart'
+ delete 'empty_cart' => 'cart#empty_cart'
+
+ #Log-In/Log-Out
+ get 'login' => 'sessions#new'
+ post 'authenticate' => 'sessions#create'
+ delete'logout' => 'sessions#destroy'
+
+ #Admin dashboard
+ get 'admin_dashboard' =>'pages#admin_dashboard'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

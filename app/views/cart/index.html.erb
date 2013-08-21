@@ -1,0 +1,36 @@
+<table class = 'table'>
+		<tr>
+			<td></td>
+			<td> Item </td>
+			<td>Units</td>
+			<td>Quantity</td>
+			<td>Cost</td>
+		</tr>
+		<tr>
+			<td> <%session[:cart][:details].each do |detail| %> </td>
+			<td> <%= detail[:product_name] %>  <%= image_tag Product.find(detail[:product_id]).image.url(:tiny)%>
+			</td>
+			<td> <%= detail[:units] %></td>
+			<td> <%= detail[:quantity] %></td>
+			<td> <%= detail[:cost] %></td>
+		</tr>
+
+
+<% end %>
+
+	</table>
+
+<%= form_tag charges_path do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= @amount %></span>
+    </label>
+  </article>
+
+  <%= hidden_field_tag 'amount', @amount %>
+
+  <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount="<%=@amount_in_cents%>"></script>
+<% end %>

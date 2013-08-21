@@ -1,0 +1,37 @@
+<table class = 'table'>
+	  <thead>
+		<tr>
+			<th> <!-- Picture of Product --></th>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Units</th>
+			<th>Cost</th>
+			<th>Expected Pickup Day</th>
+			<th>Order Status</th>
+		</tr>
+	  </thead>
+
+		<% @order_details.each do |detail| %>
+		<tr>
+				<% product = Product.find(detail.product_id) %>
+				<td> <%= image_tag product.image.url(:thumb)%> </td>
+				<td><%= product.name %></td>
+				<td><%= detail.quantity %></td>
+				<td><%= product.unit %></td>
+				<td>$ <%= number_with_precision(product.price * detail.quantity, :precision => 2) %></td>
+				<td><%= detail.order_pickup_date.strftime('%b %d, %Y') %></td>
+				<td>
+					<% if detail.taken %>
+						Taken
+					<% elsif detail.ready_for_pickup %>
+						Ready For Pickup
+					<% elsif detail.ordered %>
+						Ordered
+					<% else %>
+						Pending
+					<% end %>
+				<td>
+		</tr>
+			<% end %>
+
+	</table>

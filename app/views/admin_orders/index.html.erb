@@ -1,0 +1,10 @@
+<% @recent_orders.each do |order| %>
+	Product: <%= Product.find(order.product_id).name %>, Quantity: <%= order.quantity %>, Date Placed: <%= order.created_at %>
+	<br>  
+<% end %>
+PAST SHTUFF
+<br>
+<% @past_orders.each do |order| %>
+	Product: <%= Product.find(order.product_id).name %>, Quantity: <%= order.quantity %>, Date Placed: <%= order.created_ at %>
+	<br>  
+<% end %>

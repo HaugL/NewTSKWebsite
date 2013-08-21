@@ -1,0 +1,18 @@
+Orders Needed To Be Placed
+<br><br>
+<% @needed_orders_grouped_by_order_date_and_product.each do |date_set| %>
+	Order Cut Off Date: <%= date_set[0] %>
+	<br><br>
+	<% date_set[1].each_pair do |product_id, order_info| %>
+		<% product = Product.find(product_id) %>
+		Product: <%= product.name %>, Quantity: <%= order_info[:quantity]%> <%= product.unit %>
+		<%= form_for @admin_order do |f| %>
+			<%= f.hidden_field :product_id, :value => product_id%>
+		    <%= f.hidden_field :quantity, :value => order_info[:quantity] %>
+		    <%= f.hidden_field :expected_pickup_date, :value => order_info[:expected_pickup_date] %>
+		    <%= f.hidden_field :order_by_date, :value => date_set[0] %>
+			<%= f.submit 'Mark Order As Placed' %>
+		<% end %>
+	<% end %>
+<% end %>
+

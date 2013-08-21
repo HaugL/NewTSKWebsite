@@ -1,0 +1,40 @@
+<div class = 'well'>
+	<div class = 'cart-title'>Your Cart</div>
+
+	<!-- If there is an existing card and there are things in that cart -->
+	<% if session[:cart] && session[:cart].any? %>
+	<table class = 'cart-table'>
+		<tr>
+			<td>Item</td>
+			<td>Qty.</td>
+			<td>Units</td>
+			<td>Cost</td>
+		</tr>
+
+			<% session[:cart][:details].each do |detail| %>
+				<tr>
+					<td class = 'wrapper'><%= detail[:product_name] %></td>
+					<td><%= detail[:quantity] %></td>
+					<td><%= detail[:units] %></td>
+					<td>$<%= number_with_precision(detail[:cost], :precision => 2)%></td>
+					<td>
+						<%= link_to image_tag('/cancel-circle.png'), remove_from_cart_path(:product_id => detail[:product_id]), 
+									:method => :delete %>
+						<%= link_to image_tag('/pencil.png'), remove_from_cart_path %>
+					</td>
+				</tr>
+			<% end %>
+
+	</table>
+
+	<div class = 'total'>Total: $<%=number_with_precision(session[:cart][:total], :precision => 2) %></div>
+	<%= link_to 'View Cart', cart_index_path, :class => 'payment-button' %>
+
+	<!-- If the cart is empty -->
+	<% else %>
+		Your cart is empty. Click on an item on the left to add something to it
+	<% end %>
+
+
+
+</div>

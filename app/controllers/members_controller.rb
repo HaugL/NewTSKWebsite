@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+		skip_before_filter :validated_member_is_logged_in, :only => [:new, :create]
 	def new
 		@member = Member.new
 		render 'edit'

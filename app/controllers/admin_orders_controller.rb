@@ -38,6 +38,16 @@ class AdminOrdersController < ApplicationController
     end
 
     def update
+        admin_order = AdminOrder.find(params[:id])
+        admin_order.ready_for_pickup = true
+        admin_order.save
+        
+        admin_order.order_details.each do |order_detail|
+            order_detail.ready_for_pickup = true
+            order_detail.save
+        end
+
+        redirect_to admin_orders_path
     end 
 
     ##################################################

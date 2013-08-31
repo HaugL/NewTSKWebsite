@@ -1,7 +1,7 @@
 Orders Needed To Be Placed
 <br><br>
 <% @needed_orders_grouped_by_order_date_and_product.each do |date_set| %>
-	Order Cut Off Date: <%= date_set[0] %>
+	<%= date_set[0].strftime("Order Cut Off Date: %A, %b %d") %>
 	<br><br>
 	<% date_set[1].each_pair do |product_id, order_info| %>
 		<% product = Product.find(product_id) %>

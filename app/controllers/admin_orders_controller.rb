@@ -9,7 +9,7 @@ class AdminOrdersController < ApplicationController
 
 	################################################
 	def new
-		#Order that need to be made
+		#Orders that need to be made
 		cut_off_order_details = OrderDetail.where("Date(order_placement_date) < ? AND ordered = ?", Time.now, false)
 		needed_orders_grouped_by_date = cut_off_order_details.group_by(&:order_placement_date)
 		@needed_orders_grouped_by_order_date_and_product = group_by_product(needed_orders_grouped_by_date)
@@ -28,6 +28,8 @@ class AdminOrdersController < ApplicationController
 					   :expected_pickup_date => params[:admin_order][:expected_pickup_date],
 					   :product_id => params[:admin_order][:product_id])
 		update_all_affected_order_details(admin_order, params[:admin_order][:order_by_date])
+
+        redirect_to admin_orders_path
     end
 
     #################################################

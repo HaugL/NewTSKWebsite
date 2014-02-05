@@ -5,10 +5,8 @@
 class OrderDetail < ActiveRecord::Base
   belongs_to :order 
   belongs_to :product
-  belongs_to :admin_order
 
-  attr_accessible :quantity, :product_id, :order_placement_date, :order_pickup_date, :ordered, :admin_order_id,
-  				  :taken
+  attr_accessible :quantity, :product_id, :order_placement_date, :order_pickup_date, :ordered, :taken
 
   validates :quantity, :presence => true
 

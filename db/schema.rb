@@ -11,16 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821010856) do
-
-  create_table "admin_orders", :force => true do |t|
-    t.decimal  "quantity"
-    t.integer  "product_id"
-    t.boolean  "ready_for_pickup",     :default => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
-    t.date     "expected_pickup_date"
-  end
+ActiveRecord::Schema.define(:version => 20140205043415) do
 
   create_table "days", :force => true do |t|
     t.string "name"
@@ -45,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20130821010856) do
     t.date     "order_placement_date"
     t.date     "order_pickup_date"
     t.boolean  "ordered",              :default => false
-    t.integer  "admin_order_id"
     t.boolean  "taken",                :default => false
     t.boolean  "ready_for_pickup",     :default => false
   end

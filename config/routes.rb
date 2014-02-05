@@ -9,7 +9,6 @@ Tsk::Application.routes.draw do
  resources :units , :except => [:show, :new]
  resources :sources
  resources :charges
- resources :admin_orders
  resources :members
  
  #Cart routes

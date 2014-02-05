@@ -67,8 +67,7 @@ class CartController < ApplicationController
      #Create a hash of the important info needed to add this to an order in the future
      detail_hash = {:product_id => @detail.product_id, :product_name => @product.name, 
                     :units => @product.unit, :quantity => @detail.quantity,
-                    :cost => cost, :order_placement_date => @detail.order_placement_date, 
-                    :order_pickup_date => @detail.order_pickup_date}
+                    :cost => cost}
 
        session[:cart][:details].push(detail_hash)
        session[:cart][:total] += cost

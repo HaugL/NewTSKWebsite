@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :order_detail
 
-  attr_accessible  :name, :image, :source_id, :source_notes, :order_by_day, :pick_up_day, :unit, :price
+  attr_accessible  :name, :image, :source_id, :source_notes, :unit, :price
 
    mount_uploader :image, ImageUploader
 
@@ -17,8 +17,5 @@ class Product < ActiveRecord::Base
 
   validates :unit, :presence => :true
   validates :price, :presence => :true
-
-  validates :order_by_day, :presence => :true
-  validates :pick_up_day, :presence => :true
  
 end

@@ -12,6 +12,7 @@ gem 'sqlite3'
   gem "carrierwave"
   gem "rmagick"
   gem 'devise'
+  gem 'rolify'
 
 
 # Gems used only for assets and not required

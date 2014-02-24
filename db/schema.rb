@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140224022504) do
+ActiveRecord::Schema.define(:version => 20140224043402) do
+
+  create_table "admins", :force => true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "admins", ["name", "resource_type", "resource_id"], :name => "index_admins_on_name_and_resource_type_and_resource_id"
+  add_index "admins", ["name"], :name => "index_admins_on_name"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -36,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20140224022504) do
 
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
   add_index "members", ["reset_password_token"], :name => "index_members_on_reset_password_token", :unique => true
+
+  create_table "members_admins", :id => false, :force => true do |t|
+    t.integer "member_id"
+    t.integer "admin_id"
+  end
+
+  add_index "members_admins", ["member_id", "admin_id"], :name => "index_members_admins_on_member_id_and_admin_id"
 
   create_table "order_details", :force => true do |t|
     t.integer  "order_id"

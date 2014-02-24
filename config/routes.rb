@@ -1,15 +1,17 @@
 Tsk::Application.routes.draw do
 
- root :to => 'products#index'
+ root :to => 'categories#index'
 
  resources :cart, :only => [:index]
  resources :orders
 
  resources :products
  resources :units , :except => [:show, :new]
- resources :sources
  resources :charges
  resources :members
+ resources :categories do
+  resources :products, :only => [:index]
+end
  
  #Cart routes
  post 'add_to_cart' => 'cart#add_to_cart'

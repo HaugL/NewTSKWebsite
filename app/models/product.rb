@@ -3,17 +3,15 @@
 #
 
 class Product < ActiveRecord::Base
-  belongs_to :source
+  has_many :order_details
+  belongs_to :category
 
-  belongs_to :order_detail
-
-  attr_accessible  :name, :image, :source_id, :source_notes, :unit, :price
+  attr_accessible  :name, :image, :unit, :price, :category_id
 
    mount_uploader :image, ImageUploader
 
   validates :name, :presence => :true
   validates :image, :presence => :true
-  validates :source_id, :presence => :true
 
   validates :unit, :presence => :true
   validates :price, :presence => :true

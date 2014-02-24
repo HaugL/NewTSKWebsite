@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
   def show
   	@product = Product.find(params[:id])
   	@detail = OrderDetail.new()
-    @source = @product.source
 
   end
 
@@ -20,6 +19,7 @@ class ProductsController < ApplicationController
 
   def new
   	@product = Product.new
+    @categories = Category.all
   	render 'edit'
   end
 

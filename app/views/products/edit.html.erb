@@ -3,8 +3,7 @@
 	 <%= semantic_form_for @product, :html => {:multipart => true} do |f| %>
 	    <%= f.inputs do %>
 	      <%= f.input :name, :required => true%>
-	      <%= f.input :source_id, :as => :select, :collection => Source.all, :required => true %>
-	      <%= f.input :source_notes, :hint => "Enter extra notes about the source that are special for this product" %>
+	      <%= f.input :category_id, :as => :select, :collection => Category.all, :required => true %>
 		  <%= f.input :unit, :hint => "25 lbs Bag" %>
 		  <%= f.input :price, :as => :string, :hint => "The price per unit ( ex. 4.25 )" %>
 	      <%= f.file_field :image, :label => "Picture" %>

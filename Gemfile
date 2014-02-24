@@ -11,7 +11,7 @@ gem 'sqlite3'
   gem 'formtastic'
   gem "carrierwave"
   gem "rmagick"
-  gem 'bcrypt-ruby'
+  gem 'devise'
 
 
 # Gems used only for assets and not required

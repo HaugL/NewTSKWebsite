@@ -15,12 +15,14 @@
 				<% if session[:admin] %>
 					<%= link_to 'Admin Dashboard', admin_dashboard_path %>
 				<% end %>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
 			</div>
 			<div class = 'header-login'>
-				<% if session[:member_id].nil? %>
-					<%= link_to 'Log-In', login_path %>
+				<% if not member_signed_in? %>
+					<%= link_to 'Log-In', new_member_session_path %>
 				<% else %>
-					<%= link_to 'Log-Out', logout_path, :method => :delete %>
+					<%= link_to 'Log-Out',  destroy_member_session_path, :method => :delete %>
 				<% end %>
 			</div>
 		</div>

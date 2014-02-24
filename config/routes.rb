@@ -1,5 +1,7 @@
 Tsk::Application.routes.draw do
 
+devise_for :members
+
  root :to => 'categories#index'
 
  resources :cart, :only => [:index]
@@ -8,7 +10,7 @@ Tsk::Application.routes.draw do
  resources :products
  resources :units , :except => [:show, :new]
  resources :charges
- resources :members
+ # resources :members, only: :
  resources :categories do
   resources :products, :only => [:index]
 end
@@ -17,11 +19,6 @@ end
  post 'add_to_cart' => 'cart#add_to_cart'
  delete 'remove_from_cart' => 'cart#remove_from_cart'
  delete 'empty_cart' => 'cart#empty_cart'
-
- #Log-In/Log-Out
- get 'login' => 'sessions#new'
- post 'authenticate' => 'sessions#create'
- delete'logout' => 'sessions#destroy'
 
  #Admin dashboard
  get 'admin_dashboard' =>'pages#admin_dashboard'

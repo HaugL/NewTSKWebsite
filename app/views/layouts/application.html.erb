@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tsk</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= stylesheet_link_tag 'formtastic', 'my_formtastic_changes' %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Tsk</title>
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	    <%= stylesheet_link_tag 'formtastic', 'my_formtastic_changes' %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
 		<div class = 'header-container'>
 			<div class = 'header-links'>
 				<%= link_to 'Products', root_path %>
 				<%= link_to 'Orders', orders_path %>
-				<% if session[:admin] %>
+				<% if member_signed_in? && (current_member.has_role? :admin) %>
 					<%= link_to 'Admin Dashboard', admin_dashboard_path %>
 				<% end %>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
 			</div>
 			<div class = 'header-login'>
 				<% if not member_signed_in? %>
@@ -29,8 +27,5 @@
 		<div class = 'container'>
 		<%= yield %>
 		</div>
-
-
-
-</body>
+	</body>
 </html>
